@@ -1,4 +1,32 @@
-<h1>this is the about page</h1>
+<div class="container" id="about-container">
+  <div class="card-product">
+    <p><%= image_tag "cam.jpg" %></p>
+    <div class="card-product-infos">
+      <h1>Hey, I'm Cam</h1>
+      <p>After 9 years of working in construction, I decided to change my career</p>
+      <p>I have just completed a very intensive 9 week, Full Stack Developer, bootcamp with Le Wagon.
+      Now I'm going it alone and attempting to build my own products without the ability to ask teachers for help...</p>
+      <p>This website will serve to show my experience and my continued development, self learning</p>
+      <p><strong>Below</strong> you'll find a breakdown of my pre-tech career</p>
+    </div>
+  </div>
 
-<p><%= link_to 'Articles listing', articles_path %></p>
-<p><%= link_to 'Home', root_path %></p>
+
+  <h2 class="text-center mt-4">My career so far</h2>
+
+  <div class="card-category">
+    <p class="btn btn-outline-info"><%= link_to 'Stace', stace_path %></p>
+    <%= image_tag "stace1.jpeg" %>
+  </div>
+  <div class="card-category">
+    <p class="btn btn-outline-info"><%= link_to 'Westfield', westfield_path %></p>
+    <%= image_tag "" %>
+  </div>
+  <div class="card-category">
+    <p class="btn btn-outline-info"><%= link_to 'Oktra', oktra_path %></p>
+    <%= image_tag "" %>
+  </div>
+
+</div>
+
+
