@@ -14,14 +14,13 @@
   </head>
 
   <body class= "d-flex flex-column">
-    <div class="page-content">
-    </div>
-    <!-- renders the partial created. no _ needed -->
     <%= render 'shared/navbar' %>
+    <div class="page-content">
+    <!-- renders the partial created. no _ needed -->
     <%= render 'layouts/messages' %>
-    <%= render 'shared/footer' %>
   <!-- yields to other html pages to load -->
     <%= yield %>
-
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>

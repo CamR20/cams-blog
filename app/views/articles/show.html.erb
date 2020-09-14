@@ -1,19 +1,22 @@
-<div class="page-content">
-<h1>Showing article details</h1>
 
 
-<p><strong>title: </strong><%= @article.title %></p>
-<p><strong>description: </strong><%= @article.description %></p>
+<h2 class="text-center mt-4"><%= @article.title %></h2>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            by Cameron
+          </div>
+          <div class="card-body">
+            <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+            <p class="btn btn-outline-info"><%= link_to 'Edit', edit_article_path(@article) %></p>
+            <p class="btn btn-outline-danger"><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "are you sure?" } %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@article.created_at)%>,
+            edited <%= time_ago_in_words(@article.updated_at) %></small>
+          </div>
+        </div>
+      </div>
 
-
-<!-- needs to be instance variable as not in code already, like it is in new.html -->
-<%= link_to 'Edit', edit_article_path(@article) %>
-        <!-- need method delete only for delete option, otherwise it thinks its a show -->
-        <!-- data is js -->
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "are you sure?"} %>
-
-<p><%= link_to 'Return to articles listing', articles_path %></p>
-
-<p><%= link_to 'Home', root_path %></p>
-
-</div>
