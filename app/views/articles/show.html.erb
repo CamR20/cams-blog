@@ -3,3 +3,12 @@
 
 <p><strong>title: </strong><%= @article.title %></p>
 <p><strong>description: </strong><%= @article.description %></p>
+
+
+<!-- needs to be instance variable as not in code already, like it is in new.html -->
+<%= link_to 'Edit', edit_article_path(@article) %>
+        <!-- need method delete only for delete option, otherwise it thinks its a show -->
+        <!-- data is js -->
+<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "are you sure?"} %>
+
+<p><%= link_to 'Return to articles listing', articles_path %></p>

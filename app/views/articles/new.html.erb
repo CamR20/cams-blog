@@ -1,34 +1,5 @@
 <h1>Create a new article</h1>
 
-<!-- checks if any errors in form submission. then shows error messages to user-->
-<!-- if blank and/or too short, user will be prompted - based on validations -->
-<!-- to make this work def new needs to be set up in articles controller -->
-<% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being saved</h2>
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-<% end %>
-    </ul>
+<%= render 'form' %>
 
-
-
-<%= form_with scope: :article, url: articles_path, local:true do |f| %>
-<p>
-  <%= f.label :title %><br/>
-  <%= f.text_field :title %>
-</p>
-
-<p>
-  <%= f.label :description %><br/>
-  <%= f.text_area :description %>
-</p>
-
-
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
-
-
+<p><%= link_to 'Return to articles listing', articles_path %></p>

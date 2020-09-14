@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
+
+# performs this action before anything else on this page where set article is used
+# write this code once the controller has been coded and you can see what has the same code
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def show
-    @article = Article.find(params[:id])
+     # uses the before action above and set_article below
   end
 
   def index
@@ -12,13 +17,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    # same line as show, as needs to find specific article to be edited. nothing will happen until update is set up
-    @article = Article.find(params[:id])
+    # uses the before action above and set_article below
   end
 
   def create
     # to create you need top level article, and the only permitted attributes are title and description
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(article_params)
     # save back to the database
     if @article.save
       # shows user that the article has been saved. see application.html for each method
@@ -33,9 +37,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
+     # uses the before action above and set_article below
     # will only update if the below requirements are met
-    if @article.update(params.require(:article).permit(:title, :description))
+    if @article.update(article_params)
       flash[:notice] = "Article was updated successfully"
       # redirects to article show page
       redirect_to @article
@@ -44,4 +48,25 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    # first, have to find the article to destroy
+     # uses the before action above and set_article below
+    @article.destroy
+    redirect_to articles_path
+  end
+
+  # only for use inside this controller
+  private
+
+  def set_article
+    # the below line is used in destroy, update, edit and show. to make DRY, converted to one line
+    @article = Article.find(params[:id])
+  end
+
+  def article_params
+    # below taken from update and create, so that users have to use the required permissions
+    params.require(:article).permit(:title, :description)
+  end
+
 end
