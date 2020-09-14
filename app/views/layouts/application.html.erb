@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+      <%= msg %>
+    <% end %>
+  <!-- yields to other html pages to load -->
     <%= yield %>
   </body>
 </html>
