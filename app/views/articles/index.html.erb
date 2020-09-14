@@ -1,32 +1,33 @@
-<h1>this is the index, yo</h1>
+<h1 class="text-center mt-4">listing all articles, yo</h1>
+<div class="page-content">
+  <div class="container">
+  <% @articles.each do |article| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            by Cameron
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
+            <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+            <p class="btn btn-outline-success"><%= link_to 'View', article_path(article) %></p>
+            <p class="btn btn-outline-info"><%= link_to 'Edit', edit_article_path(article) %></p>
+            <p class="btn btn-outline-danger"><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "are you sure?" } %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(article.created_at)%>,
+            edited <%= time_ago_in_words(article.updated_at) %></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <!-- colspan 3 is because there are show, edit, delete which span 1 col each -->
-      <th colspan = "3">Actions</th>
-    </tr>
-  </thead>
+  </div>
+</div>
 
-    <tbody>
-      <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <!-- use rails routes to check the paths -->
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <!-- need method delete only for delete option, otherwise it thinks its a show -->
-        <td><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "are you sure?" } %></td>
-      </tr>
-      <% end %>
-    </tbody>
-</table>
-
-<p><%= link_to 'Create new article', new_article_path %></p>
 
 
 
