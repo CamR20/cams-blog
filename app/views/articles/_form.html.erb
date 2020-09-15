@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10">
-      <%= render 'shared/errors' %>
+      <!-- as article and users have same error page, need to put obj into form partial and update both renders below to have obj set up -->
+      <%= render 'shared/errors', obj:@article %>
   <!-- this ensures that the form shows the existing information of the article, so can edit -->
   <!-- it looks at which model. we use the instance variable -->
     <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local:true) do |f| %>

@@ -1,0 +1,41 @@
+<!-- the form is the same for the new and edit, so it can be used as a partial -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= render 'shared/errors', obj: @user %>
+  <!-- this ensures that the form shows the existing information of the article, so can edit -->
+  <!-- it looks at which model. we use the instance variable -->
+    <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local:true) do |f| %>
+      <div class="form-group row">
+        <%= f.label :username, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "enter your username" %>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <%= f.label :email, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "enter email here"%>
+        </div>
+      </div>
+
+       <div class="form-group row">
+        <%= f.label :password, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "enter password here"%>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <%= f.submit "sign up", class: "btn btn-outline-light btn-lg"%>
+      </div>
+    <% end %>
+    </div>
+    <div class="mb-3">
+      <div class= "btn btn-outline-dark btn-lg"><%= link_to ' Return to article listings', articles_path, class: "text-info" %>
+    </div>
+      </div>
+  </div>
+</div>
