@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
   def create
     # to create you need top level article, and the only permitted attributes are title and description
     @article = Article.new(article_params)
+    @article.user = User.first
     # save back to the database
     if @article.save
       # shows user that the article has been saved. see application.html for each method
