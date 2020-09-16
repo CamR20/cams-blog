@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <!-- as article and users have same error page, need to put obj into form partial and update both renders below to have obj set up -->
+      <%= render 'shared/errors', obj:@category, %>
+  <!-- this ensures that the form shows the existing information of the article, so can edit -->
+  <!-- it looks at which model. we use the instance variable -->
+    <%= form_with(model: @category, class: "shadow p-3 mb-3 bg-info rounded", local:true) do |f| %>
+      <div class="form-group row">
+        <%= f.label :title, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "enter title here" %>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <%= f.label :description, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "enter description here"%>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :category, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+        <%= f.text_area :category rows: 10, class: "form-control shadow rounded", placeholder: "enter category here"%>
+        </div>
+      </div>
+
+      <div class="form-group row justify-content-center">
+        <%= f.submit class: "btn btn-outline-light btn-lg"%>
+      </div>
+    <% end %>
+    </div>
+    <div class="mb-3">
+      <div class= "btn btn-outline-dark btn-lg"><%= link_to ' Return to article listings', articles_path, class: "text-info" %>
+    </div>
+      </div>
+  </div>
+</div>

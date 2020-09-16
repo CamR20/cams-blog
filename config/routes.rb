@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   # the below ensures that all paths are set up except the new which is set up above
   resources :users, except: [:new]
+  resources :categories, except: [:destroy]
 end
